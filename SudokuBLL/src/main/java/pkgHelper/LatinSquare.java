@@ -10,7 +10,7 @@ public class LatinSquare {
 	 * @version 1.1
 	 * @since Lab #1
 	 */
-	private int[][] LatinSquare;
+	public int[][] LatinSquare;
 
 	/**
 	 * No-arg constructor, make it public, don't do anything in the constructor
