@@ -50,14 +50,58 @@ public class Sudoku extends LatinSquare {
 	}
 	
 	protected boolean isSudoku() {
-		return false;
+		boolean isSudoku = false;
+		int num_of_length;
+		if (super.LatinSquare.length % 3 == 0) {
+			num_of_length = super.LatinSquare.length / 3;
+		}else {
+			num_of_length = super.LatinSquare.length / 3 + 1;
+		}
+		int num_of_region = num_of_length* num_of_length;
+		if(super.isLatinSquare()) {
+			for (int i = 0; i< num_of_region; i++ ) {
+				if (super.hasDuplicates(getRegion(i))) {
+					return false;}
+				else {
+					isSudoku = true;
+				}
+			}
+		}else {
+				return false;
+		}
+		
+		return isSudoku;
 	}
 	
 	protected boolean isPartialSudoku() {
-		return false;
+		boolean isPartialSudoku = false;
+		if (isSudoku()) {
+			if(super.ContainsZero()) {
+				isPartialSudoku = true;
+			}else {
+				return false;
+			}	
+		}else {
+			return false;
+		}
+		return isPartialSudoku;
 	}
 	
 	protected boolean isValueValid(int iValue, int Col, int Row) {
-		return false;
+		boolean isValueValid = false;
+		if(super.doesElementExist(super.getColumn(Col), iValue)) {
+			return false;
+		}else {
+			if(super.doesElementExist(super.getRow(Row), iValue)) {
+				return false;
+			}else {
+				if(super.doesElementExist(getRegion(Col,Row), iValue)) {
+					return false;
+				}else {
+					isValueValid = true;
+				}
+			}
+		}
+		return isValueValid;
 	}
 }
