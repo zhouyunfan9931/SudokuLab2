@@ -105,7 +105,7 @@ public class LatinSquareTest {
 	@Test
 	public void isLatinSquare_Test1() {
 		
-		int[][] MySquare = { { 1, 2, 3 }, { 3, 1, 2 }, { 2, 3, 1 } };
+		int[][] MySquare = { { 0, 1, 2 }, { 2, 0, 1 }, { 1, 2, 0 } };
 
 		LatinSquare LS = new LatinSquare(MySquare);
 		

@@ -46,43 +46,46 @@ public class Sudoku extends LatinSquare {
 		return getRegion(i);
 	}
 	
-	protected boolean isSudoku() {
-		boolean isSudoku = false;
+	protected boolean isPartialSudoku() {
+		boolean isPartialSudoku = false;
 		int num_of_length;
 		int iSize = getPuzzle().length;
-		if (iSize % 3 == 0) {
-			num_of_length = iSize / 3;
-		}else {
-			num_of_length = iSize / 3 + 1;
-		}
+		num_of_length = (int) Math.sqrt(iSize);
 		int num_of_region = num_of_length* num_of_length;
 		if(super.isLatinSquare()) {
 			for (int i = 0; i< num_of_region; i++ ) {
 				if (super.hasDuplicates(getRegion(i))) {
 					return false;}
 				else {
-					isSudoku = true;
+					isPartialSudoku = true;
 				}
 			}
 		}else {
 				return false;
 		}
 		
-		return isSudoku;
+		if(super.doesElementExist(getRow(0), 0)) {
+			isPartialSudoku = true;
+			}
+		else {
+			return false;
+			}
+		
+		return isPartialSudoku;
 	}
 	
-	protected boolean isPartialSudoku() {
-		boolean isPartialSudoku = false;
-		if (isSudoku()) {
+	protected boolean isSudoku() {
+		boolean isSudoku = false;
+		if (isPartialSudoku()) {
 			if(super.ContainsZero()) {
-				isPartialSudoku = true;
-			}else {
 				return false;
+			}else {
+				isSudoku = true;
 			}	
 		}else {
 			return false;
 		}
-		return isPartialSudoku;
+		return isSudoku;
 	}
 	
 	protected boolean isValueValid(int iValue, int Col, int Row) {

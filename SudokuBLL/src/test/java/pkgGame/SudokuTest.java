@@ -51,14 +51,50 @@ public class SudokuTest {
 		System.out.println(Arrays.toString(Region));
 	}
 	
-
+	@Test
+	public void isPartialSudoku_test1() {
+		Sudoku s = new Sudoku();
+		int[][] LatinSquare = {{0,1,2,3},{1,2,3,4},{3,4,1,2},{4,1,3,2}};
+		s.setLatinSquare(LatinSquare);
+		boolean aisPartialSudoku = s.isPartialSudoku();
+		assertEquals(aisPartialSudoku, false);
+	}
 	
+	@Test
+	public void isPartialSudoku_test2() {
+		Sudoku s = new Sudoku();
+		int[][] LatinSquare = {{3,1,4,2},{2,4,1,3},{4,3,2,1},{1,2,3,4}};
+		s.setLatinSquare(LatinSquare);
+		boolean aisPartialSudoku = s.isPartialSudoku();
+		assertEquals(aisPartialSudoku, false);
+	}
 	
+	@Test
+	public void isPartialSudoku_test3() {
+		Sudoku s = new Sudoku();
+		int[][] LatinSquare = {{2,0,3,1},{1,3,0,2},{3,2,1,0},{0,1,2,3}};
+		s.setLatinSquare(LatinSquare);
+		boolean aisPartialSudoku = s.isPartialSudoku();
+		assertEquals(aisPartialSudoku, true);
+	}
 	
+	@Test
+	public void isPartialSudoku_test4() {
+		Sudoku s = new Sudoku();
+		int[][] LatinSquare = {{2,0,3,0},{0,3,0,2},{3,2,0,0},{0,0,2,3}};
+		s.setLatinSquare(LatinSquare);
+		boolean aisPartialSudoku = s.isPartialSudoku();
+		assertEquals(aisPartialSudoku, false);
+	}
 	
-	
-	
-	
+	@Test
+	public void isSudoku_test1() {
+		Sudoku s = new Sudoku();
+		int[][] LatinSquare = {{2,0,3,0},{0,3,0,2},{3,2,0,0},{0,0,2,3}};
+		s.setLatinSquare(LatinSquare);
+		boolean aisPartialSudoku = s.isPartialSudoku();
+		assertEquals(aisPartialSudoku, false);
+	}
 	
 	@Test
 	public void isValueValid_test1() {
