@@ -81,7 +81,7 @@ public class SudokuTest {
 	@Test
 	public void isPartialSudoku_test4() {
 		Sudoku s = new Sudoku();
-		int[][] LatinSquare = {{2,0,3,0},{0,3,0,2},{3,2,0,0},{0,0,2,3}};
+		int[][] LatinSquare = {{2,1,3,1},{1,3,1,2},{3,2,1,1},{1,1,2,3}};
 		s.setLatinSquare(LatinSquare);
 		boolean aisPartialSudoku = s.isPartialSudoku();
 		assertEquals(aisPartialSudoku, false);

@@ -17,7 +17,7 @@ public class Sudoku extends LatinSquare {
 	protected int[][] getPuzzle(){
 		return super.getLatinSquare();
 	}
-	
+		
 	protected int[] getRegion(int iRegionNbr) {
 		int num_of_length;
 		int start_row;
