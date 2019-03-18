@@ -23,18 +23,15 @@ public class Sudoku extends LatinSquare {
 		int start_row;
 		int start_col;
 		int count = 0;
-		if (super.LatinSquare.length % 3 == 0) {
-			num_of_length = super.LatinSquare.length / 3;
-		}else {
-			num_of_length = super.LatinSquare.length / 3 + 1;
-		}
+		int iSize = getPuzzle().length;
+		num_of_length = (int) Math.sqrt(iSize);
 		int[] getRegion = new int[num_of_length * num_of_length];
-		start_row = (iRegionNbr / num_of_length) * (super.LatinSquare.length / num_of_length);
-		start_col = (iRegionNbr % num_of_length) * (super.LatinSquare.length / num_of_length);
+		start_row = (iRegionNbr / num_of_length) * (iSize / num_of_length);
+		start_col = (iRegionNbr % num_of_length) * (iSize / num_of_length);
 		
 		for (int i = start_row ; i < start_row + num_of_length  ; i++) {
 			for (int k = start_col; k < start_col + num_of_length ; k++) {
-				getRegion[count] = super.LatinSquare[i][k];
+				getRegion[count] = getPuzzle()[i][k];
 				count = count + 1;
 				}
 		}
@@ -42,7 +39,7 @@ public class Sudoku extends LatinSquare {
 	}
 	
 	protected int[] getRegion(int Col, int Row){
-		int iSize = super.LatinSquare.length;
+		int iSize = getPuzzle().length;
 		int iSqrtSize = (int) Math.sqrt(iSize);
 		int i = (Row/ iSqrtSize) * iSqrtSize + (Col / iSqrtSize) ;
 			
@@ -52,10 +49,11 @@ public class Sudoku extends LatinSquare {
 	protected boolean isSudoku() {
 		boolean isSudoku = false;
 		int num_of_length;
-		if (super.LatinSquare.length % 3 == 0) {
-			num_of_length = super.LatinSquare.length / 3;
+		int iSize = getPuzzle().length;
+		if (iSize % 3 == 0) {
+			num_of_length = iSize / 3;
 		}else {
-			num_of_length = super.LatinSquare.length / 3 + 1;
+			num_of_length = iSize / 3 + 1;
 		}
 		int num_of_region = num_of_length* num_of_length;
 		if(super.isLatinSquare()) {
